@@ -1,39 +1,43 @@
-package ru.nataliShop.model.entity;
+package ru.natali.shop.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import ru.nataliShop.util.OrderStatus;
+import ru.natali.shop.util.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order")
-public class Order {
+@Builder
+@Entity
+@Table(name = "orders")
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @CreationTimestamp
     private LocalDateTime created;
+
     @UpdateTimestamp
     private LocalDateTime updated;
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-    private BigDecimal sum;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrderDetails> details;
+
+    private BigDecimal totalPrice;
+
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "order")
+//    @JoinColumn(name = "details_id")
+    private List<OrderDetailsEntity> detailsList;
 }

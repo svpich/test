@@ -16,6 +16,7 @@
     <description>nataliShop</description>
     <properties>
         <java.version>17</java.version>
+        <mapstract>1.5.3.Final</mapstract>
     </properties>
     <dependencies>
         <dependency>
@@ -53,6 +54,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--- mapstract -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstract}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstract}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

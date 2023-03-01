@@ -1,4 +1,4 @@
-package ru.nataliShop.model.entity;
+package ru.natali.shop.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,16 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+import java.math.BigDecimal;
+
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "category")
-public class Category {
+@Builder
+@Entity
+@Table(name = "products")
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private BigDecimal price;
+
     private String title;
 }

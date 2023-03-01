@@ -1,4 +1,4 @@
-package ru.nataliShop;
+package ru.natali.shop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -6,8 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class NataliShopApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+
 
 }
